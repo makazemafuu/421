@@ -11,7 +11,7 @@ namespace _421
     {
         public int nbFace;
         private int face;
-        Random random = new Random();
+        private Random random = new Random();
         public int Face
         {
             get { return face; }
@@ -35,9 +35,9 @@ namespace _421
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             string toString = String.Format("The player rolled the dice and obtained {0} ~", Lancer());
-            Console.ResetColor();
             
             return toString;
+            Console.ResetColor();
         }
 
         public int Lancer()

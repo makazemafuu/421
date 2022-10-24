@@ -10,7 +10,7 @@ namespace DeTruque
     {
         public readonly int nbManches;
         public readonly int nbDes;
-        public static List<int> des = new List<int>() { };
+        private static List<int> des = new List<int>() { };
 
 
         public override string ToString()
@@ -18,5 +18,20 @@ namespace DeTruque
             string toString = String.Format("");
             return toString;
         }
+
+        /*public int Reroll()
+        {
+            int i;
+        }
+
+        public int Score()
+        {
+
+        }
+        public int Run()
+        {
+
+        }*/
+
     }
 }
