@@ -1,5 +1,6 @@
 ﻿using _421;
 using System;
+using System.Runtime.InteropServices;
 
 namespace _421
 {
@@ -26,12 +27,12 @@ namespace _421
             Console.ResetColor();
             Wait(0.5f);
 
-            // on peu changer directement ici les valeurs pour passer par exemple d'un de6 à un de20)
+            /*// on peu changer directement ici les valeurs pour passer par exemple d'un de6 à un de20)
             De pureRandom = new De();
             // on appelle la méthode ToString plutôt que lancer ~
-            Console.WriteLine(pureRandom.ToString());
+            Console.WriteLine(pureRandom.ToString());*/
 
-            DeTruque notRandom = new DeTruque();
+            DeTruque notRandom = new DeTruque("6");
             Console.WriteLine(notRandom.ToString());
 
         }

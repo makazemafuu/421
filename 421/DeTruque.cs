@@ -10,10 +10,9 @@ namespace _421
     public class DeTruque : De
     {
         Random rnd = new Random();
-        public DeTruque(int NbFace = 0, int AFace = 0) : base(NbFace, AFace)
+        public DeTruque(string NbFace) : base(NbFace)
         {
             nbFace = NbFace;
-            Face = AFace;
         }
 
         public override string ToString()
@@ -24,7 +23,7 @@ namespace _421
             return toString;
             Console.ResetColor();
         }
-        
+
         // méthode pour le dé truqué, on prend une base de 12 pour calculer la probabilité ici puisqu'il est demandé dans les règles d'avoir une chance sur 2, 6 puis 12
         public int Lancer()
         {
@@ -58,8 +57,8 @@ namespace _421
 
             // debug
             // Console.WriteLine(rndNum);
-
-            return result;
+            Face = result;
+            return Face;
         }
     }
 }

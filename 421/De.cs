@@ -9,7 +9,7 @@ namespace _421
 {
     public class De
     {
-        public int nbFace;
+        public string nbFace;
         private int face;
         private Random random = new Random();
         public int Face
@@ -25,25 +25,25 @@ namespace _421
         }
 
         // on met des valeurs par défaut dans le constructeur mais il n'est pas utilisé ici
-        public De(int NbFace = 5, int AFace = 6)
+        public De(string NbFace)
         {
             nbFace = NbFace;
-            Face = AFace;
+            Lancer();
         }
 
         public override string ToString()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            string toString = String.Format("The player rolled the dice and obtained {0} ~", Lancer());
+            string toString = String.Format("The player rolled the dice and obtained {0} ~", Face);
             
             return toString;
             Console.ResetColor();
         }
 
-        public int Lancer()
+        public virtual int Lancer()
         {
-            int lancer = random.Next(1, this.nbFace++);
-            return lancer;
+            Face = random.Next(1, int.Parse(nbFace)+1);
+            return Face;
         }
     }
 }
