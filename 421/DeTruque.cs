@@ -9,9 +9,9 @@ namespace _421
     public class DeTruque : De
     {
         Random rnd = new Random();
-        public DeTruque(int NbDes, int AFace) : base(NbDes, AFace)
+        public DeTruque(int NbFace, int AFace) : base(NbFace, AFace)
         {
-            nbDes = NbDes;
+            nbFace = NbFace;
             Face = AFace;
         }
         public int Lancer()

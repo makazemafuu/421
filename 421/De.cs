@@ -9,8 +9,8 @@ namespace _421
 {
     public class De
     {
-        public int nbDes = 5;
-        private int face = 6;
+        public int nbFace;
+        private int face;
         Random random = new Random();
         public int Face
         {
@@ -21,29 +21,28 @@ namespace _421
                 {
                     face = value;
                 }
-                else
-                {
-                    face = 0;
-                    Console.WriteLine("Please, reroll the dice !");
-                }
             }
         }
 
-        public De(int NbDes, int AFace)
+        // on met des valeurs par défaut dans le constructeur mais il n'est pas utilisé ici
+        public De(int NbFace = 5, int AFace = 6)
         {
-            nbDes = NbDes;
+            nbFace = NbFace;
             Face = AFace;
         }
 
         public override string ToString()
         {
-            string toString = String.Format("The player rolled the dice and obtained {0}", this.face);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            string toString = String.Format("The player rolled the dice and obtained {0} ~", Lancer());
+            Console.ResetColor();
+            
             return toString;
         }
 
         public int Lancer()
         {
-            int lancer = random.Next(1, 7);
+            int lancer = random.Next(1, this.nbFace++);
             return lancer;
         }
     }

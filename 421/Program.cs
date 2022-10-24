@@ -9,20 +9,31 @@ namespace _421
         {
             string player;
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("What's your name, stranger ?");
+            Console.ResetColor();
             player = Console.ReadLine();
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Alrighty then, {0} ! Please, roll the dice now...", player);
-            Console.ReadLine();
+            Console.Write("\n");
+            Console.ResetColor();
+            Wait(0.5f);
 
-            De UnDe = new De(5, 1);
-            De UnAutreDe = new De(5, 2);
-            De UnTroisiemeDe = new De(5, 3);
-            De UnQuatriemeDe = new De(5, 4);
-            De UnCinquiemeDe = new De(5, 5);
-            De UnDernierDe = new De(5, 6);
+            // on peu changer directement ici les valeurs pour passer par exemple d'un de6 à un de20)
+            De pureRandom = new De(1, 20);
 
-            De[] CatalogueDe = new De[] { UnDe, UnAutreDe, UnTroisiemeDe, UnQuatriemeDe, UnCinquiemeDe, UnDernierDe };
+            // on appelle la méthode ToString plutôt que lancer ~
+            Console.WriteLine(pureRandom.ToString());
+
         }
+
+        //pause the game for n-seconds (not using Sleep())
+        static void Wait(float second)
+        {
+            Task delay = Task.Delay(TimeSpan.FromSeconds(second));
+            delay.Wait();
+        }
+
     }
 }
