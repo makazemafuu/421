@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _421;
+using System;
 
 namespace _421
 {
@@ -22,8 +23,6 @@ namespace _421
             De UnDernierDe = new De(5, 6);
 
             De[] CatalogueDe = new De[] { UnDe, UnAutreDe, UnTroisiemeDe, UnQuatriemeDe, UnCinquiemeDe, UnDernierDe };
-
-
         }
     }
 }
