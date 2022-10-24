@@ -11,27 +11,17 @@ namespace DeTruque
         public readonly int nbManches;
         public readonly int nbDes;
         private static List<int> des = new List<int>() { };
-
+        public Game(int NbManches, int NbDes)
+        {
+            nbManches = NbManches;
+            nbDes = NbDes;
+        }
 
         public override string ToString()
         {
             string toString = String.Format("");
             return toString;
         }
-
-        /*public int Reroll()
-        {
-            int i;
-        }
-
-        public int Score()
-        {
-
-        }
-        public int Run()
-        {
-
-        }*/
-
     }
+
 }
