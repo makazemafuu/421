@@ -10,6 +10,7 @@ namespace DeTruque
     {
         public readonly int nbManches;
         public readonly int nbDes;
+        Random rndNbDes = new Random();
         private static List<int> des = new List<int>() { };
         public Game(int NbManches, int NbDes)
         {
@@ -17,6 +18,11 @@ namespace DeTruque
             nbDes = NbDes;
         }
 
+        public int DesStandards()
+        {
+            int numberOfDice = rndNbDes.Next(1, 6);
+            return numberOfDice;
+        }
         public override string ToString()
         {
             string toString = String.Format("");
