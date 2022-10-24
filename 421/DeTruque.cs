@@ -19,39 +19,47 @@ namespace _421
         public override string ToString()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            string toString = String.Format("The player rolled the dice and obtained {0} ~", Throw());
+            string toString = String.Format("The player rolled the dice and obtained {0} ~", Lancer());
 
             return toString;
             Console.ResetColor();
         }
-        public int Throw()
+        
+        // méthode pour le dé truqué, on prend une base de 12 pour calculer la probabilité ici puisqu'il est demandé dans les règles d'avoir une chance sur 2, 6 puis 12
+        public int Lancer()
         {
-            if (rnd.NextDouble() < 0.5)
+            int result = 0;
+            int rndNum = rnd.Next(1, 13);
+
+            if (rndNum < 6)
             {
-                return 6;
+                result = 6;
             }
-            else if (rnd.NextDouble() < 0.16)
+            else if (rndNum == 6 || rndNum == 7 || rndNum == 8)
             {
-                return 5;
+                result = 5;
             }
-            else if (rnd.NextDouble() < 0.083)
+            else if (rndNum == 9)
             {
-                return 4;
+                result = 4;
             }
-            else if (rnd.NextDouble() < 0.083)
+            else if (rndNum == 10)
             {
-                return 3;
+                result = 3;
             }
-            else if (rnd.NextDouble() < 0.083)
+            else if (rndNum == 11)
             {
-                return 2;
+                result = 2;
             }
-            else if (rnd.NextDouble() < 0.083)
+            else if (rndNum == 12)
             {
-                return 1;
+                result = 1;
             }
 
-            return rnd.Next(1, 6);
+            // debug
+            // Console.WriteLine(rndNum);
+
+            return result;
         }
     }
 }

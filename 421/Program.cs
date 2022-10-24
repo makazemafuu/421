@@ -20,11 +20,11 @@ namespace _421
             Console.ResetColor();
             Wait(0.5f);
 
-            /*// on peu changer directement ici les valeurs pour passer par exemple d'un de6 à un de20)
+            // on peu changer directement ici les valeurs pour passer par exemple d'un de6 à un de20)
             De pureRandom = new De();
 
             // on appelle la méthode ToString plutôt que lancer ~
-            Console.WriteLine(pureRandom.ToString());*/
+            Console.WriteLine(pureRandom.ToString());
 
             DeTruque notRandom = new DeTruque();
             Console.WriteLine(notRandom.ToString());
