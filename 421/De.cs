@@ -1,37 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace _421
 {
-    class De
+    public class De
     {
-        string nbFaces;
-        Random random;
-        private int face;
+        public int nbDes = 5;
+        private int face = 6;
+        Random random = new Random();
         public int Face
         {
             get { return face; }
-            set { }
+            set
+            {
+                if (value == 1 || value == 2 || value == 3 || value == 4 || value == 5 || value == 6)
+                {
+                    face = value;
+                }
+                else
+                {
+                    face = 0;
+                    Console.WriteLine("Please, reroll the dice !");
+                }
+            }
         }
 
-        public De(string NbFaces, int aFace)
+        public De(int NbDes, int AFace)
         {
-            NbFaces = NbFaces;
-            Face = aFace;
+            nbDes = NbDes;
+            Face = AFace;
         }
 
-        public string ToString()
+        public override string ToString()
         {
-            string toString = "";
+            string toString = String.Format("The player rolled the dice and obtained {0}", this.face);
             return toString;
         }
 
         public int Lancer()
         {
-            int lancer;
+            int lancer = random.Next(1, 7);
             return lancer;
         }
     }
