@@ -25,7 +25,7 @@ namespace _421
 
         // méthode pour le dé truqué, on prend une base de 12 pour calculer la probabilité ici puisqu'il est demandé dans les règles d'avoir une chance sur 2, 6 puis 12
         // ici on retourne le résultat avec le setter Face
-        public int Lancer()
+        public override int Lancer()
         {
             int result = 0;
             int rndNum = rnd.Next(1, 13);

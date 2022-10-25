@@ -19,12 +19,19 @@ namespace _421
             // dés standards et nombre de manches
 
             this.nbManches = 5;
-            this.nbDes = 5;
+            this.nbDes = 6;
 
-            for (int i = 0; i < nbDes; i++)
+            for (int i = 0; i < nbDes - 2; i++)
             {
-                des[i] = new De("6");
+
+                des.Add(new De("6"));
             }
+
+            for (int i = nbDes - 2; i < nbDes; i++)
+            {
+                des.Add(new DeTruque("6"));
+            }
+
         }
 
         // constructeur avec création d'une nouvelle liste de dés (pour avoir plusieurs dé6)
@@ -36,7 +43,12 @@ namespace _421
 
             for (int i = 0; i < nbDes; i++)
             {
-                des[i] = new De("6");
+                des.Add(new De("6"));
+            }
+
+            for (int i = 0; i < nbDes; i++)
+            {
+                des.Add(new DeTruque("6"));
             }
 
         }
@@ -45,17 +57,17 @@ namespace _421
         public override string ToString()
         {
             string toString = String.Format("");
-            for (int i = 0; i < nbDes; i++)
+            for (int i = 0; i < des.Count; i++)
             {
                 toString += String.Format("+---+ ");
             }
             toString += String.Format("\n");
-            for (int i = 0; i < nbDes; i++)
+            for (int i = 0; i < des.Count; i++)
             {
                 toString += String.Format("| {0} | ", des[i].Face);
             }
             toString += String.Format("\n");
-            for (int i = 0; i < nbDes; i++)
+            for (int i = 0; i < des.Count; i++)
             {
                 toString += String.Format("+---+ ");
             }
@@ -68,7 +80,7 @@ namespace _421
         {
             List<int> list = new List<int>();
             string text = String.Format("What are the dice that you wish to reroll ?");
-            for (int i = 0; i < nbDes; i++)
+            for (int i = 0; i < des.Count; i++)
             {
                 if (des[i].Face != 6)
                 {
@@ -81,10 +93,10 @@ namespace _421
             Console.WriteLine(text);
             int retour = 0; // on créer un retour pour que seul des choix valables soient proposés, et si le joueur ne choisi pas un bon nombre, ça lui demande encore
 
-            while (retour < 1 || retour > nbDes)
+            while (retour < 1 || retour > des.Count)
             {
                 bool playerChoice = int.TryParse(Console.ReadLine(), out retour);
-                if (!playerChoice || retour < 1 || retour > nbDes)
+                if (!playerChoice || retour < 1 || retour > des.Count)
                 {
                     string textChoice = String.Format("Please give me a number between these : ");
                     for (int i = 0; i < list.Count; i++)
@@ -98,38 +110,6 @@ namespace _421
             des[retour - 1].Lancer();
             return des[retour - 1].Face;
         }
-
-        /*public int Score()
-        {
-            List<int> list = new List<int>();
-            int score = 0;
-
-            for (int i = 0; i < des[i].Face; i++)
-            {
-                score += des[i].Face;
-            }
-            return score;
-        }*/
-
-        /*public int Run()
-        {
-            string player;
-            int nbDice;
-
-            Console.WriteLine("What's your name, stranger ?");
-            player = Console.ReadLine();
-
-            Console.WriteLine("With how many dice would you like to play with ?");
-            nbDice = int.Parse(Console.ReadLine());
-
-            Console.WriteLine(nbDes);
-
-            Console.WriteLine("Alrighty then, {0} ! Please, roll the dice now...", player);
-            Console.Write("\n");
-            Wait(0.5f);
-
-            return Run();
-        }*/
 
         // pause the game for n-seconds (not using Sleep())
         static void Wait(float second)
