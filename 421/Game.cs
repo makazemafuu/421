@@ -10,9 +10,9 @@ namespace _421
 {
     public class Game
     {
-        private const string NbFace = "6";
         public readonly int nbManches;
         public readonly int nbDes;
+        Random rndNbDes = new Random();
         private static List<De> des = new List<De>();
         public Game()
         {
