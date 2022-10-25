@@ -99,21 +99,30 @@ namespace _421
             return des[retour - 1].Face;
         }
 
-        /*public int Score()
+        public int Score()
         {
-            
-        }*/
+            List<int> list = new List<int>();
+            int score = 0;
+
+            for (int i = 0; i < des[i].Face; i++)
+            {
+                score += des[i].Face;
+            }
+            return score;
+        }
 
         public int Run()
         {
             string player;
-            int playerDice;
+            int nbDice;
 
             Console.WriteLine("What's your name, stranger ?");
             player = Console.ReadLine();
 
             Console.WriteLine("With how many dice would you like to play with ?");
-            playerDice = int.Parse(Console.ReadLine());
+            nbDice = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(nbDes);
 
             Console.WriteLine("Alrighty then, {0} ! Please, roll the dice now...", player);
             Console.Write("\n");
