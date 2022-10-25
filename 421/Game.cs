@@ -35,26 +35,22 @@ namespace _421
         }
 
         // constructeur avec création d'une nouvelle liste de dés (pour avoir plusieurs dé6)
-        public Game(int NbManches, int NbDes)
+        public Game(int NbNormalDice, int NbLoadedDice, int NbRounds)
         {
-            this.nbManches = NbManches;
-            this.nbDes = NbDes;
+            this.nbManches = NbRounds;
+            this.nbDes = NbNormalDice + NbLoadedDice;
             des = new List<De>();
 
-            for (int i = 0; i < nbDes; i++)
+            for (int i = 0; i < NbNormalDice; i++)
             {
                 des.Add(new De("6"));
             }
 
-            for (int i = 0; i < nbDes; i++)
+            for (int i = 0; i < NbLoadedDice; i++)
             {
                 des.Add(new DeTruque("6"));
             }
 
-        }
-
-        public Game(int NbManches, int NbDes, int nbRounds) : this(NbManches, NbDes)
-        {
         }
 
         // affichage pour les dés
@@ -102,9 +98,11 @@ namespace _421
 
             while (nbManches > 0)
             {
+                bool problem = false;
+                Console.WriteLine(ToString());
 
                 string relanceDes;
-                Console.WriteLine("How many dice would you like to roll back ? (or write \"Q\" (or \"q\") to quit ~)\n");
+                Console.WriteLine("How many dice would you like to roll back (please write as the following example : \"x,y\" ? or write \"Q\" (or \"q\") to quit ~)\n");
                 relanceDes = Console.ReadLine();
 
                 if (relanceDes == "Q" || relanceDes == "q")
@@ -116,7 +114,24 @@ namespace _421
                     string[] listRelanceDes = relanceDes.Split(',');
                     foreach (string str in listRelanceDes)
                     {
-                        Relancer(int.Parse(str));
+                        int leDe = int.Parse(str);
+                        // Console.WriteLine(leDe);
+
+                        if (leDe < 1 || leDe > nbDes)
+                        {
+                            Console.WriteLine("Nope, pick different ones.");
+                            problem = true;
+                            break;
+                        }
+                        else
+                        {
+                            Relancer(leDe);
+                        }
+                    }
+
+                    if (problem)
+                    {
+                        continue;
                     }
                 }
                 nbManchesLeft--;
