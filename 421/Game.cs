@@ -53,6 +53,10 @@ namespace _421
 
         }
 
+        public Game(int NbManches, int NbDes, int nbRounds) : this(NbManches, NbDes)
+        {
+        }
+
         // affichage pour les dés
         public override string ToString()
         {

@@ -12,7 +12,7 @@ namespace _421
         public string nbFace;
         private int face;
         private Random random = new Random();
-        
+
         // pour faire un get; set;
         public int Face
         {
@@ -43,7 +43,7 @@ namespace _421
         // méthode pour lancer de manière aléatoire
         public virtual int Lancer()
         {
-            Face = random.Next(1, int.Parse(nbFace)+1);
+            Face = random.Next(1, int.Parse(nbFace) + 1);
             return Face;
         }
     }
