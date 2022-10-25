@@ -92,7 +92,7 @@ namespace _421
             return finalScore;
         }
 
-        public string Run()
+        public int Run()
         {
             int nbManchesLeft = nbManches;
 
@@ -109,13 +109,15 @@ namespace _421
                 }
                 else
                 {
-
+                    string[] listRelanceDes = relanceDes.Split(',');
+                    foreach (string str in listRelanceDes)
+                    {
+                        Relancer(int.Parse(str));
+                    }
                 }
+                nbManchesLeft--;
             }
-
-            nbManchesLeft--;
-            return Run();
-
+            return 0;
         }
 
         // pause the game for n-seconds (not using Sleep())
