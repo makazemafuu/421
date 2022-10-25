@@ -99,7 +99,7 @@ namespace _421
             return des[retour - 1].Face;
         }
 
-        public int Score()
+        /*public int Score()
         {
             List<int> list = new List<int>();
             int score = 0;
@@ -109,9 +109,9 @@ namespace _421
                 score += des[i].Face;
             }
             return score;
-        }
+        }*/
 
-        public int Run()
+        /*public int Run()
         {
             string player;
             int nbDice;
@@ -129,7 +129,7 @@ namespace _421
             Wait(0.5f);
 
             return Run();
-        }
+        }*/
 
         // pause the game for n-seconds (not using Sleep())
         static void Wait(float second)
