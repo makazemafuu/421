@@ -82,6 +82,16 @@ namespace _421
             return 0;
         }
 
+        public int Score()
+        {
+            int finalScore = 0;
+            foreach(De de in des)
+            {
+                finalScore += de.Face;
+            }
+            return finalScore;
+        }
+
         // pause the game for n-seconds (not using Sleep())
         static void Wait(float second)
         {
