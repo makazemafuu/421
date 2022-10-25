@@ -76,39 +76,10 @@ namespace _421
 
         // méthode pour relancer les dés, la boucle for sert à dire que seul les dés qui ne sont pas à 6 peuvent être relancé (puisqu'on fait le plus haut score et que 6 est le maximum)
         // on ajouter à la liste avec un list.Add
-        public int Relance()
+        public int Relancer(int i)
         {
-            List<int> list = new List<int>();
-            string text = String.Format("What are the dice that you wish to reroll ?");
-            for (int i = 0; i < des.Count; i++)
-            {
-                if (des[i].Face != 6)
-                {
-                    list.Add(i + 1);
-                    text += String.Format(i + 1 + ",");
-                }
-            }
-
-            // on fait apparaître notre string text après chaque lancer (pour relancer)
-            Console.WriteLine(text);
-            int retour = 0; // on créer un retour pour que seul des choix valables soient proposés, et si le joueur ne choisi pas un bon nombre, ça lui demande encore
-
-            while (retour < 1 || retour > des.Count)
-            {
-                bool playerChoice = int.TryParse(Console.ReadLine(), out retour);
-                if (!playerChoice || retour < 1 || retour > des.Count)
-                {
-                    string textChoice = String.Format("Please give me a number between these : ");
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        textChoice += String.Format(list[i].ToString() + ",");
-                    }
-
-                    Console.Write(textChoice);
-                }
-            }
-            des[retour - 1].Lancer();
-            return des[retour - 1].Face;
+            des[i - 1].Lancer(); 
+            return 0;
         }
 
         // pause the game for n-seconds (not using Sleep())
