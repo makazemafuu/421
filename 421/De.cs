@@ -12,6 +12,8 @@ namespace _421
         public string nbFace;
         private int face;
         private Random random = new Random();
+        
+        // pour faire un get; set;
         public int Face
         {
             get { return face; }
@@ -24,22 +26,21 @@ namespace _421
             }
         }
 
-        // on met des valeurs par défaut dans le constructeur mais il n'est pas utilisé ici
+        // dans un constructeur on n'est pas obligé de tout mettre
+        // on peu appeler une méthode dans un constructeur également
         public De(string NbFace)
         {
             nbFace = NbFace;
             Lancer();
         }
-
         public override string ToString()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
             string toString = String.Format("The player rolled the dice and obtained {0} ~", Face);
-            
             return toString;
-            Console.ResetColor();
+
         }
 
+        // méthode pour lancer de manière aléatoire
         public virtual int Lancer()
         {
             Face = random.Next(1, int.Parse(nbFace)+1);

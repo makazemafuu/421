@@ -9,6 +9,8 @@ namespace _421
 {
     public class DeTruque : De
     {
+        // DeTruque hérite de De
+
         Random rnd = new Random();
         public DeTruque(string NbFace) : base(NbFace)
         {
@@ -17,14 +19,12 @@ namespace _421
 
         public override string ToString()
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
             string toString = String.Format("The player rolled the dice and obtained {0} ~", Lancer());
-
             return toString;
-            Console.ResetColor();
         }
 
         // méthode pour le dé truqué, on prend une base de 12 pour calculer la probabilité ici puisqu'il est demandé dans les règles d'avoir une chance sur 2, 6 puis 12
+        // ici on retourne le résultat avec le setter Face
         public int Lancer()
         {
             int result = 0;

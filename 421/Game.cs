@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Sources;
 
 namespace _421
 {
@@ -15,6 +16,8 @@ namespace _421
         private static List<De> des = new List<De>();
         public Game()
         {
+            // dés standards et nombre de manches
+
             this.nbManches = 5;
             this.nbDes = 5;
 
@@ -24,6 +27,7 @@ namespace _421
             }
         }
 
+        // constructeur avec création d'une nouvelle liste de dés (pour avoir plusieurs dé6)
         public Game(int NbManches, int NbDes)
         {
             this.nbManches = NbManches;
@@ -36,6 +40,8 @@ namespace _421
             }
 
         }
+
+        // affichage pour les dés
         public override string ToString()
         {
             string toString = String.Format("");
@@ -56,10 +62,12 @@ namespace _421
             return toString;
         }
 
+        // méthode pour relancer les dés, la boucle for sert à dire que seul les dés qui ne sont pas à 6 peuvent être relancé (puisqu'on fait le plus haut score et que 6 est le maximum)
+        // on ajouter à la liste avec un list.Add
         public int Relance()
         {
             List<int> list = new List<int>();
-            string text = String.Format("What are the dice you wish to reroll ?");
+            string text = String.Format("What are the dice that you wish to reroll ?");
             for (int i = 0; i < nbDes; i++)
             {
                 if (des[i].Face != 6)
@@ -68,8 +76,10 @@ namespace _421
                     text += String.Format(i + 1 + ",");
                 }
             }
+
+            // on fait apparaître notre string text après chaque lancer (pour relancer)
             Console.WriteLine(text);
-            int retour = 0;
+            int retour = 0; // on créer un retour pour que seul des choix valables soient proposés, et si le joueur ne choisi pas un bon nombre, ça lui demande encore
 
             while (retour < 1 || retour > nbDes)
             {
@@ -87,6 +97,36 @@ namespace _421
             }
             des[retour - 1].Lancer();
             return des[retour - 1].Face;
+        }
+
+        /*public int Score()
+        {
+            
+        }*/
+
+        public int Run()
+        {
+            string player;
+            int playerDice;
+
+            Console.WriteLine("What's your name, stranger ?");
+            player = Console.ReadLine();
+
+            Console.WriteLine("With how many dice would you like to play with ?");
+            playerDice = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Alrighty then, {0} ! Please, roll the dice now...", player);
+            Console.Write("\n");
+            Wait(0.5f);
+
+            return Run();
+        }
+
+        // pause the game for n-seconds (not using Sleep())
+        static void Wait(float second)
+        {
+            Task delay = Task.Delay(TimeSpan.FromSeconds(second));
+            delay.Wait();
         }
     }
 
