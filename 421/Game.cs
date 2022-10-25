@@ -78,18 +78,44 @@ namespace _421
         // on ajouter à la liste avec un list.Add
         public int Relancer(int i)
         {
-            des[i - 1].Lancer(); 
+            des[i - 1].Lancer();
             return 0;
         }
 
         public int Score()
         {
             int finalScore = 0;
-            foreach(De de in des)
+            foreach (De de in des)
             {
                 finalScore += de.Face;
             }
             return finalScore;
+        }
+
+        public string Run()
+        {
+            int nbManchesLeft = nbManches;
+
+            while (nbManches > 0)
+            {
+
+                string relanceDes;
+                Console.WriteLine("How many dice would you like to roll back ? (or write \"Q\" (or \"q\") to quit ~)\n");
+                relanceDes = Console.ReadLine();
+
+                if (relanceDes == "Q" || relanceDes == "q")
+                {
+                    break;
+                }
+                else
+                {
+
+                }
+            }
+
+            nbManchesLeft--;
+            return Run();
+
         }
 
         // pause the game for n-seconds (not using Sleep())
